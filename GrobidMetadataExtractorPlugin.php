@@ -106,6 +106,7 @@ class GrobidMetadataExtractorPlugin extends GenericPlugin
             $author->setData('email', '');
             $author->setData('givenName', $xpath->query('tei:persName/tei:forename[@type="first"]', $authorNode)->item(0)->nodeValue, $primaryLocale);
             $author->setData('familyName', $xpath->query('tei:persName/tei:surname', $authorNode)->item(0)->nodeValue, $primaryLocale);
+            // TODO multiple-author-affiliations
             $author->setData('affiliation', $xpath->query('tei:affiliation/tei:orgName', $authorNode)->item(0)->nodeValue, $primaryLocale);
             $author->setData('publicationId', $submission->getCurrentPublication()->getId());
             Repo::author()->add($author);
